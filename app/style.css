@@ -1,0 +1,139 @@
+/* Neon Grid Cover Studio — dark neon editor theme. System fonts only. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #0d0221;
+  color: #f4eaff;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+.top { padding: 22px 22px 6px; text-align: center; }
+.top h1 {
+  margin: 0;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 34px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 0 18px #ff2e88, 0 0 42px #7b2ff7;
+}
+.top h1 span { color: #ffd166; }
+.tag { margin: 8px auto 0; max-width: 640px; color: #c4b5fd; font-size: 14px; }
+
+.studio {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 18px 22px 8px;
+  flex-wrap: wrap;
+}
+.preview-col { text-align: center; }
+#cover {
+  max-width: min(92vw, 560px);
+  max-height: 72vh;
+  width: auto; height: auto;
+  border: 2px solid #ff2e88;
+  border-radius: 10px;
+  box-shadow: 0 0 28px rgba(255, 46, 136, 0.45), 0 0 60px rgba(123, 47, 247, 0.3);
+  background: #160a24;
+  cursor: grab;
+  touch-action: none;
+}
+#cover:active { cursor: grabbing; }
+.hint { color: #9d8bc7; font-size: 13px; max-width: 520px; margin: 10px auto 0; }
+
+.controls { width: 360px; max-width: 94vw; }
+.group {
+  background: #1a0b33;
+  border: 1px solid #3b1d6e;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.group h2 {
+  margin: 0 0 10px;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffd166;
+}
+.seg { display: flex; gap: 6px; flex-wrap: wrap; }
+.seg button, .btn {
+  background: #2b1055;
+  color: #f4eaff;
+  border: 1px solid #6d28d9;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.seg button:hover, .btn:hover { background: #3b1d6e; }
+.seg button.on, .btn.primary {
+  background: #ff2e88;
+  border-color: #ff5ce1;
+  color: #fff;
+  font-weight: bold;
+}
+.grades { display: flex; flex-direction: column; gap: 6px; }
+.grade {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  text-align: left;
+}
+.grade.on { border-color: #fff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
+
+label { display: block; font-size: 13px; color: #c4b5fd; margin-bottom: 8px; }
+input[type="text"] {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid #6d28d9;
+  background: #0d0221;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Arial Black", Arial, sans-serif;
+  letter-spacing: 1px;
+}
+input[type="range"] { width: 100%; accent-color: #ff2e88; }
+.note { font-size: 12px; color: #9d8bc7; margin: 8px 0 0; }
+.row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.row.wrap .btn { flex: 1 1 40%; }
+.btn.upload { position: relative; overflow: hidden; }
+.btn.upload input {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer;
+}
+.thumbs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+.thumb {
+  width: 60px; height: 75px;
+  border: 2px solid #3b1d6e;
+  border-radius: 6px;
+  cursor: pointer;
+  object-fit: cover;
+}
+.thumb.sel { border-color: #ffd166; box-shadow: 0 0 10px rgba(255, 209, 102, 0.7); }
+.foot { text-align: center; color: #7e6aa8; font-size: 12px; padding: 10px 20px 22px; }
+
+/* Full-bleed cover render (?shot=cover): only the canvas, edge to edge. */
+body.shot-cover { background: #0d0221; }
+body.shot-cover .top,
+body.shot-cover .controls,
+body.shot-cover .hint,
+body.shot-cover .foot { display: none; }
+body.shot-cover .studio { display: block; padding: 0; }
+body.shot-cover .preview-col { margin: 0; }
+body.shot-cover #cover {
+  display: block;
+  max-width: none; max-height: none;
+  width: 100vw; height: 100vh;
+  border: 0; border-radius: 0; box-shadow: none;
+  object-fit: fill;
+}

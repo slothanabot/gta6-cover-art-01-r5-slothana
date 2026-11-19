@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Grid Cover Studio — GTA 6-style cover maker</title>
+<meta name="description" content="Offline multi-panel cover maker in the style of GTA 6 posters: pick a grid, load your photos, grade them neon, write the caption, export a PNG.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>NEON GRID <span>COVER STUDIO</span></h1>
+  <p class="tag">Make a GTA 6-style multi-panel cover from your own photos. Works fully offline — photos never leave your machine.</p>
+</header>
+
+<main class="studio">
+  <section class="preview-col">
+    <canvas id="cover" width="540" height="675" aria-label="Cover preview"></canvas>
+    <p class="hint">Drag the cover to pan the selected panel · scroll to zoom · click a panel thumbnail to select it.</p>
+  </section>
+
+  <aside class="controls">
+    <section class="group">
+      <h2>Layout</h2>
+      <div class="seg" id="layout-seg">
+        <button type="button" data-v="6">6-panel</button>
+        <button type="button" data-v="4">4-panel</button>
+        <button type="button" data-v="9">9-panel</button>
+        <button type="button" data-v="solo">Solo</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Neon grade</h2>
+      <div class="grades" id="grade-seg"></div>
+    </section>
+
+    <section class="group">
+      <h2>Export size</h2>
+      <div class="seg" id="size-seg">
+        <button type="button" data-v="1080x1080">1080 × 1080</button>
+        <button type="button" data-v="1080x1350">1080 × 1350</button>
+        <button type="button" data-v="1920x1080">1920 × 1080</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Caption</h2>
+      <label>Title <input id="title-input" type="text" maxlength="24" value="NEON GRID"></label>
+      <label>Subtitle <input id="subtitle-input" type="text" maxlength="40" value="SUNSET BOULEVARD"></label>
+      <label>Badge <input id="badge-input" type="text" maxlength="4" value="06"></label>
+      <p class="note">Bold outlined caption lettering, drawn on the cover.</p>
+    </section>
+
+    <section class="group">
+      <h2 id="panel-label">Panel 1 of 6</h2>
+      <div class="thumbs" id="thumbs"></div>
+      <div class="row">
+        <label class="btn upload">Upload photo
+          <input id="photo-input" type="file" accept="image/*">
+        </label>
+        <button type="button" class="btn" id="sample-btn">Next sample</button>
+      </div>
+      <p class="note">Now showing: <span id="sample-name">Sample scene 1</span></p>
+      <label>Zoom <span id="zoom-val">100%</span>
+        <input id="zoom" type="range" min="50" max="300" value="100">
+      </label>
+      <div class="row">
+        <button type="button" class="btn" id="fill-all-btn">Fill all panels with this photo</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Export PNG</h2>
+      <div class="row wrap">
+        <button type="button" class="btn primary" data-export="1080x1080">PNG · 1080 × 1080</button>
+        <button type="button" class="btn primary" data-export="1080x1350">PNG · 1080 × 1350</button>
+        <button type="button" class="btn primary" data-export="1920x1080">PNG · 1920 × 1080</button>
+      </div>
+      <div class="row">
+        <button type="button" class="btn" id="shuffle-btn">Shuffle samples + grade</button>
+        <button type="button" class="btn" id="reset-btn">Reset</button>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<footer class="foot">
+  <p>Neon Grid Cover Studio — an original, offline web app. No Rockstar logos, artwork or fonts; all sample art is painted in code. Photos you load stay on your device.</p>
+</footer>
+
+<script src="src/cover.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
